@@ -44,8 +44,32 @@ public class ListadoServlet extends HttpServlet {
             out.println("<script src='https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js'></script>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<div class='container mt-5'>");
             
+            out.println("<header>");
+            out.println("<nav class='navbar navbar-expand-lg navbar-light bg-light'>");
+            out.println("<div class='container-fluid'>");
+            out.println("<a class='navbar-brand' href='#'>Proyecto Base</a>");
+            out.println("<button class='navbar-toggler' type='button' data-bs-toggle='collapse' data-bs-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation'>");
+            out.println("<span class='navbar-toggler-icon'></span>");
+            out.println("</button>");
+            out.println("<div class='collapse navbar-collapse' id='navbarSupportedContent'>");
+            out.println("<ul class='navbar-nav me-auto mb-2 mb-lg-0'>");
+            out.println("<li class='nav-item'>");
+            out.println("<a class='nav-link active' aria-current='page' href='#'>Home</a>");
+            out.println("</li>");
+            out.println("<li class='nav-item'>");
+            out.println("<a class='nav-link active' aria-current='page' href='/ProyectoBase/carrera/nuevaCarrera.html'>Nueva Carrera</a>");
+            out.println("</li>");
+            out.println("<li class='nav-item'>");
+            out.println("<a class='nav-link active' aria-current='page' href='/ProyectoBase/ListadoServlet'>Listado Carreras</a>");
+            out.println("</li>");
+            out.println("</ul>");
+            out.println("</div>");
+            out.println("</div>");
+            out.println("</nav>");
+            out.println("</header>");
+
+            out.println("<div class='container mt-5'>");
             out.println("<table class='table table-striped'>");
             out.println("<tr><th>Clave carrera</th><th>Nombre Carrera</th><th>Descripcion</th><th>Eliminar</th><th>Actualizar</th></tr>");
             
@@ -57,7 +81,7 @@ public class ListadoServlet extends HttpServlet {
                     dto = (CarreraDTO) resultados.get(i);
                     //Los links pasar parametros por metodo get al servlet
                     out.println("<tr>");
-                    out.println("<td><a class='btn btn-info' href='' role='button'>"+dto.getEntidad().getIdCarrera()+"</a></td>"); //Consultar una carrera
+                    out.println("<td><a class='btn btn-info' href='/ProyectoBase/MostrarCarrera?idCarrera="+dto.getEntidad().getIdCarrera()+"' role='button'>Consultar</a></td>"); //Actualizar
                     out.println("<td>"+dto.getEntidad().getNombreCarrera()+"</td>");
                     out.println("<td>"+dto.getEntidad().getDescripcionCarrera()+"</td>");
                     out.println("<td><button type='button' class='btn btn-danger' data-bs-toggle='modal' data-bs-target='#exampleModal' onclick='setIdEliminar("+dto.getEntidad().getIdCarrera()+")'>Eliminar</button></td>"); //Eliminar

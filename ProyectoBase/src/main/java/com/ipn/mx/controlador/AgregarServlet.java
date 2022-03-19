@@ -29,6 +29,7 @@ public class AgregarServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        request.setCharacterEncoding("utf-8");
         CarreraDAO dao = new CarreraDAO();
         CarreraDTO dto = new CarreraDTO();
 
@@ -45,6 +46,30 @@ public class AgregarServlet extends HttpServlet {
             out.println("<script src='https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js'></script>");
             out.println("</head>");
             out.println("<body>");
+            out.println("<header>");
+            out.println("<nav class='navbar navbar-expand-lg navbar-light bg-light'>");
+            out.println("<div class='container-fluid'>");
+            out.println("<a class='navbar-brand' href='#'>Proyecto Base</a>");
+            out.println("<button class='navbar-toggler' type='button' data-bs-toggle='collapse' data-bs-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation'>");
+            out.println("<span class='navbar-toggler-icon'></span>");
+            out.println("</button>");
+            out.println("<div class='collapse navbar-collapse' id='navbarSupportedContent'>");
+            out.println("<ul class='navbar-nav me-auto mb-2 mb-lg-0'>");
+            out.println("<li class='nav-item'>");
+            out.println("<a class='nav-link active' aria-current='page' href='#'>Home</a>");
+            out.println("</li>");
+            out.println("<li class='nav-item'>");
+            out.println("<a class='nav-link active' aria-current='page' href='/ProyectoBase/carrera/nuevaCarrera.html'>Nueva Carrera</a>");
+            out.println("</li>");
+            out.println("<li class='nav-item'>");
+            out.println("<a class='nav-link active' aria-current='page' href='/ProyectoBase/ListadoServlet'>Listado Carreras</a>");
+            out.println("</li>");
+            out.println("</ul>");
+            out.println("</div>");
+            out.println("</div>");
+            out.println("</nav>");
+            out.println("</header>");
+
             out.println("<div class='container'>");
             try {
                 dao.create(dto);

@@ -2,7 +2,7 @@
 <html>
     <head>
         <title>Registrar carrera</title>
-        <meta charset="UTF-8">
+        <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
@@ -18,10 +18,19 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="/ProyectoBase/">Home</a>
+                                <a class="nav-link active" aria-current="page" href="#">Home</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link active" aria-current="page" href="/ProyectoBase/carrera/nuevaCarrera.html">Nueva Carrera</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="/ProyectoBase/AgregarAlumno">Nuevo Alumno</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="/ProyectoBase/ListadoServlet">Listado Carreras</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="/ProyectoBase/ListadoAlumnos">Listado Alumnos</a>
                             </li>
                         </ul>
                     </div>
@@ -32,13 +41,13 @@
             <main>
                 <section>
                     <h1 class="d-md-flex justify-content-md-center">Registro de una nueva Carrera</h1>
-                    <form method="post" action="/ProyectoBase/AgregarServlet" name="frmDatos">
+                    <form method="post" action="/ProyectoBase/AgregarServlet" name="frmDatos" accept-charset="UTF-8">
                         <div class="mb-3">
                             <label for="txtNombreCarrera" class="form-label">Nombre de la Carrera: </label>
                             <input class="form-control" type="text" name="txtNombreCarrera" id="txtNombreCarrera" required maxlength="50" placeholder="Carrera">
                         </div>
                         <div class="mb-3">
-                            <label for="txtDescripcionCarrera" class="form-label">Descripcion Carrera</label>
+                            <label for="txtDescripcionCarrera" class="form-label">Descripción Carrera</label>
                             <input class="form-control" type="text" name="txtDescripcionCarrera" id="txtDescripcionCarrera" required maxlength="50" placeholder="Descripcion">
                         </div>
                         <div class="d-md-flex justify-content-md-end">

@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Registrar carrera</title>
+        <title>Registrar alumno</title>
         <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     </head>
     <body>
         <header>
@@ -40,16 +39,34 @@
         <div class="container">
             <main>
                 <section>
-                    <h1 class="d-md-flex justify-content-md-center">Registro de una nueva Carrera</h1>
-                    <form method="post" action="/ProyectoBase/AgregarServlet" name="frmDatos" accept-charset="UTF-8">
+                    <h1 class="d-md-flex justify-content-md-center">Registro de un nuevo Alumno</h1>
+                    <form method="post" action="/ProyectoBase/AgregarAlumno" name="frmDatos" accept-charset="UTF-8">
                         <div class="mb-3">
-                            <label for="txtNombreCarrera" class="form-label">Nombre de la Carrera: </label>
-                            <input class="form-control" type="text" name="txtNombreCarrera" id="txtNombreCarrera" required maxlength="50" placeholder="Carrera">
+                            <label for="txtNombreAlumno" class="form-label">Nombre del Alumno: </label>
+                            <input class="form-control" type="text" name="txtNombreAlumno" id="txtNombreAlumno" required maxlength="50" placeholder="Alumno">
                         </div>
                         <div class="mb-3">
-                            <label for="txtDescripcionCarrera" class="form-label">Descripción Carrera</label>
-                            <input class="form-control" type="text" name="txtDescripcionCarrera" id="txtDescripcionCarrera" required maxlength="50" placeholder="Descripcion">
+                            <label for="txtPaternoAlumno" class="form-label">Apellido Paterno: </label>
+                            <input class="form-control" type="text" name="txtPaternoAlumno" id="txtPaternoAlumno" required maxlength="50" placeholder="Paterno">
                         </div>
+                        <div class="mb-3">
+                            <label for="txtMaternoAlumno" class="form-label">Apellido Materno: </label>
+                            <input class="form-control" type="text" name="txtMaternoAlumno" id="txtMaternoAlumno" required maxlength="50" placeholder="Paterno">
+                        </div>
+                        <div class="mb-3">
+                            <label for="txtEmailAlumno" class="form-label">Email: </label>
+                            <input class="form-control" type="email" name="txtEmailAlumno" id="txtEmailAlumno" required maxlength="50" placeholder="Email">
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="selectCarrera" class="form-label">Seleccione la carrera</label>
+                            <select class="form-select" aria-label="Default select example" id="selectCarrera">
+                                <option selected>Carrera</option>
+                                <option value="1">ISC</option>
+                                <option value="2">LCD</option>
+                            </select>
+                        </div>
+                            
                         <div class="d-md-flex justify-content-md-end">
                             <input type="submit" class="btn btn-primary" name="cmdEnviar" value="Registrar">
                         </div>
@@ -57,8 +74,9 @@
                 </section>
             </main>
             <footer>
-
             </footer>
         </div>
+        <script src="https://unpkg.com/@popperjs/core@2"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     </body>
 </html>
