@@ -9,12 +9,17 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 import com.ipn.mx.modelos.dao.AlumnoDAO;
+import com.ipn.mx.modelos.dao.CarreraDAO;
 import com.ipn.mx.modelos.dto.AlumnoDTO;
+import com.ipn.mx.modelos.dto.CarreraDTO;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -48,8 +53,16 @@ public class AgregarAlumno extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("utf-8");
-
-
+       String idCarrera="";
+        
+        List carrerasID = new ArrayList(); 
+            CarreraDAO carreraDAO = new CarreraDAO();
+        try{
+            carrerasID = carreraDAO.readAll();
+        }
+        catch(SQLException e){}
+        
+        
         try (PrintWriter out = response.getWriter()) {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
@@ -112,12 +125,12 @@ public class AgregarAlumno extends HttpServlet {
             out.println("</div>");
             out.println("<div class='mb-3'>");
             out.println("<label for='selectCarrera' class='form-label'>Seleccione la carrera</label>");
-            out.println("<select class='form-select' aria-label='Default select example' id='selectCarrera' name='selectCarrera''>");
+            out.println("<select class='form-select' aria-label='Default select example' id='selectCarrera' name='selectCarrera'>");
             out.println("<option selected>Carrera</option>");
-            
-            out.println("<option value='1'>ISC</option>");
-            out.println("<option value='2'>LCD</option>");
-            
+            for(int i=0; i<carrerasID.size(); i++){
+                out.println("<option value='" + ((CarreraDTO)carrerasID.get(i)).getEntidad().getIdCarrera() + "'>" + ((CarreraDTO)carrerasID.get(i)).getEntidad().getNombreCarrera() + "</option>");
+            }
+
             out.println("</select>");
             out.println("</div>");
             out.println("<div class='d-md-flex justify-content-md-end'>");
@@ -152,7 +165,29 @@ public class AgregarAlumno extends HttpServlet {
         alumnoDTO.getEntidad().setPaternoAlumno(request.getParameter("txtPaternoAlumno"));
         alumnoDTO.getEntidad().setMaternoAlumno(request.getParameter("txtMaternoAlumno"));
         alumnoDTO.getEntidad().setEmailAlumno(request.getParameter("txtEmailAlumno"));
+        alumnoDTO.getEntidad().setCarrera(Integer.parseInt(request.getParameter("selectCarrera")));
         
+        try (PrintWriter out = response.getWriter()) {
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet RegistrarAlumno</title>"); 
+            out.println("<link href='https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css' rel='stylesheet'/>");
+            out.println("<script src='https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js'></script>");           
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<div class='container'>");
+            try{
+                alumnoDAO.create(alumnoDTO);
+                out.println("<div class='alert alert-success mt-5' role='alert'>Se agregó correctamente el alumno</div>");
+            }
+            catch(SQLException e){
+                out.println("<div class='alert alert-danger mt-5' role='alert'>Error al agregar alumno</div>");
+            }
+            out.println("<a class='btn btn-primary' href='/ProyectoBase/ListadoAlumnos' role='button'>Listado de alumnos</a>"); 
+            out.println("</body>"); 
+            out.println("</html>"); 
+        }
     }
 
     /**
