@@ -28,7 +28,7 @@ public class CarreraDAO {
     
     public void getConexion(){
         String usuario = "root";
-        String clave = "n0m3l0";
+        String clave = "n0m3l0"; 
         String url="jdbc:mysql://localhost:3306/EscuelaWeb";
         String driverBD = "com.mysql.cj.jdbc.Driver";
         try {

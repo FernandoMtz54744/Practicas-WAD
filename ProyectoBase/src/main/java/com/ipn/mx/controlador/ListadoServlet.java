@@ -14,9 +14,11 @@ import jakarta.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author Fernando Mtz
+ * @author Fernando Mtz 
+ * @author Esmegod :) 
  */
-@WebServlet(name = "ListadoServlet", urlPatterns = {"/ListadoServlet"})
+
+@WebServlet(name = "ListadoServlet", value = {"/ListadoServlet"})
 public class ListadoServlet extends HttpServlet {
 
     /**
@@ -58,8 +60,8 @@ public class ListadoServlet extends HttpServlet {
                     out.println("<td><a class='btn btn-info' href='' role='button'>"+dto.getEntidad().getIdCarrera()+"</a></td>"); //Consultar una carrera
                     out.println("<td>"+dto.getEntidad().getNombreCarrera()+"</td>");
                     out.println("<td>"+dto.getEntidad().getDescripcionCarrera()+"</td>");
-                    out.println("<td><a class='btn btn-danger' href='' role='button'>"+dto.getEntidad().getIdCarrera()+"</a></td>"); //Eliminar
-                    out.println("<td><a class='btn btn-primary' href='' role='button'>"+dto.getEntidad().getIdCarrera()+"</a></td>"); //Actualizar
+                    out.println("<td><button type='button' class='btn btn-danger' data-bs-toggle='modal' data-bs-target='#exampleModal' onclick='setIdEliminar("+dto.getEntidad().getIdCarrera()+")'>Eliminar</button></td>"); //Eliminar
+                    out.println("<td><a class='btn btn-primary' href='/ProyectoBase/ActualizarCarrera?idCarrera="+dto.getEntidad().getIdCarrera()+"' role='button'>Actualizar</a></td>"); //Actualizar
                     out.println("</tr>");
                 }
 
@@ -70,7 +72,32 @@ public class ListadoServlet extends HttpServlet {
             }
             out.println("</table");
             out.println("</div>");
+            out.println("<div id='idEliminar'></div>");
+
+            out.println("<div class='modal fade' id='exampleModal' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>");
+            out.println("<div class='modal-dialog modal-dialog-centered'>");
+            out.println("<div class='modal-content'>");
+            out.println("<div class='modal-header'>");
+            out.println("<h5 class='modal-title' id='exampleModalLabel'>Eliminar</h5>");
+            out.println("<button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>");
+            out.println("</div>");
+            out.println("<div class='modal-body'>");
+            out.println("<p>¿Desea eliminar este registro?</p>");
+            out.println("</div>");
+            out.println("<div class='modal-footer'>");
+            out.println("<button type='button' class='btn btn-secondary' data-bs-dismiss='modal'>Cerrar</button>");
+            out.println("<button type='button' class='btn btn-danger' onclick='sendEliminar()'>Eliminar</button>");
+            out.println("</div>");
+            out.println("</div>");
+            out.println("</div>");
+            out.println("</div>");
+        
             out.println("</body>");
+            out.println("<script>");
+            out.println("function setIdEliminar(id){document.getElementById('idEliminar').setAttribute('valor', id);};");
+            out.println("function sendEliminar(){window.location.replace('/ProyectoBase/EliminarCarrera?idCarrera='+document.getElementById('idEliminar').getAttribute('valor'));}");
+            out.println("</script>");
+            
             out.println("</html>");
         }
     }

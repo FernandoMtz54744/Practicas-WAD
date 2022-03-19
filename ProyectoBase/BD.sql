@@ -8,5 +8,15 @@ create table Carreras(
     descripcionCarrera nvarchar(100) not null
 );
 
+drop table if exists Alumnos;
+create table Alumnos(
+	idAlumno int not null auto_increment primary key,
+    nombreAlumno nvarchar(70) not null,
+    paternoAlumno nvarchar(70) not null,
+    maternoAlumno nvarchar(70) not null,
+    emailAlumno nvarchar(70) not null,
+    idCarrera int not null
+)
 
 select * from Carreras;
+show tables;

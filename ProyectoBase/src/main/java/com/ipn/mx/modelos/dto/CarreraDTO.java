@@ -2,8 +2,6 @@ package com.ipn.mx.modelos.dto;
 
 import com.ipn.mx.modelos.entidades.Carrera;
 import java.io.Serializable;
-import java.sql.Connection;
-import java.sql.DriverManager;
 
 /**
  *
