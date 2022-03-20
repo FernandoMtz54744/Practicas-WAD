@@ -61,7 +61,13 @@ public class ListadoServlet extends HttpServlet {
             out.println("<a class='nav-link active' aria-current='page' href='/ProyectoBase/carrera/nuevaCarrera.html'>Nueva Carrera</a>");
             out.println("</li>");
             out.println("<li class='nav-item'>");
+            out.println("<a class='nav-link active' aria-current='page' href='/ProyectoBase/AgregarAlumno'>Nueva Alumno</a>");
+            out.println("</li>");
+            out.println("<li class='nav-item'>");
             out.println("<a class='nav-link active' aria-current='page' href='/ProyectoBase/ListadoServlet'>Listado Carreras</a>");
+            out.println("</li>");
+             out.println("<li class='nav-item'>");
+            out.println("<a class='nav-link active' aria-current='page' href='/ProyectoBase/ListadoAlumnos'>Listado Alumnos</a>");
             out.println("</li>");
             out.println("</ul>");
             out.println("</div>");

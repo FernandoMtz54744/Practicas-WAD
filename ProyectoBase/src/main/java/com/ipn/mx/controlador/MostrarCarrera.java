@@ -51,7 +51,7 @@ public class MostrarCarrera extends HttpServlet {
                 out.println("<!DOCTYPE html>");
                 out.println("<html>");
                 out.println("<head>");
-                out.println("<title>Servlet ActualizarCarrera</title>"); 
+                out.println("<title>Servlet MostrarCarrera</title>"); 
                 out.println("<link href='https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css' rel='stylesheet'/>");
                 out.println("<script src='https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js'></script>");           
                 out.println("</head>");
@@ -59,7 +59,7 @@ public class MostrarCarrera extends HttpServlet {
                 out.println("<div class='container mt-4'>");
                 out.println("<main>");
                 out.println("<section>");
-                out.println("<h1 class='d-md-flex justify-content-md-center'>Carrera</h1>");                                                                         
+                out.println("<h1 class='d-md-flex justify-content-md-center mt-3'>Carrera</h1>");                                                                         
                 out.println("<form method='post' action='/ProyectoBase/ListadoServlet' name='frmDatos'>");
                 out.println("<div class='mb-3'>");
                 out.println("<label for='txtIdCarrera' class='form-label'>Id Carrera:</label>");

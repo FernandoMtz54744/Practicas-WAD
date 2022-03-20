@@ -71,7 +71,7 @@ public class ActualizarCarrera extends HttpServlet {
                 out.println("<div class='container'>");
                 out.println("<main>");
                 out.println("<section>");
-                out.println("<h1 class='d-md-flex justify-content-md-center'>Actualizar Carrera</h1>");                                                                         
+                out.println("<h1 class='d-md-flex justify-content-md-center mt-3'>Actualizar Carrera</h1>");                                                                         
                 out.println("<form method='post' action='/ProyectoBase/ActualizarCarrera' name='frmDatos'>");
                 out.println("<div class='mb-3'>");
                 out.println("<label for='txtIdCarrera' class='form-label'>Id Carrera:</label>");

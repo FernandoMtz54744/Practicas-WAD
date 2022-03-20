@@ -40,15 +40,15 @@
         <div class="container">
             <main>
                 <section>
-                    <h1 class="d-md-flex justify-content-md-center">Registro de una nueva Carrera</h1>
+                    <h1 class="d-md-flex justify-content-md-center mt-3">Registro de una nueva Carrera</h1>
                     <form method="post" action="/ProyectoBase/AgregarServlet" name="frmDatos" accept-charset="UTF-8">
                         <div class="mb-3">
                             <label for="txtNombreCarrera" class="form-label">Nombre de la Carrera: </label>
-                            <input class="form-control" type="text" name="txtNombreCarrera" id="txtNombreCarrera" required maxlength="50" placeholder="Carrera">
+                            <input class="form-control" type="text" name="txtNombreCarrera" id="txtNombreCarrera" required maxlength="70" placeholder="Carrera">
                         </div>
                         <div class="mb-3">
                             <label for="txtDescripcionCarrera" class="form-label">Descripción Carrera</label>
-                            <input class="form-control" type="text" name="txtDescripcionCarrera" id="txtDescripcionCarrera" required maxlength="50" placeholder="Descripcion">
+                            <input class="form-control" type="text" name="txtDescripcionCarrera" id="txtDescripcionCarrera" required maxlength="500" placeholder="Descripcion">
                         </div>
                         <div class="d-md-flex justify-content-md-end">
                             <input type="submit" class="btn btn-primary" name="cmdEnviar" value="Registrar">
