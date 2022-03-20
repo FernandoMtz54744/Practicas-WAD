@@ -5,7 +5,7 @@ drop table if exists Carreras;
 create table Carreras(
 	idCarrera int not null auto_increment primary key, 
 	nombreCarrera nvarchar(70) not null,
-    descripcionCarrera nvarchar(100) not null
+    descripcionCarrera nvarchar(500) not null
 );
 
 drop table if exists Alumnos;
@@ -18,5 +18,4 @@ create table Alumnos(
     idCarrera int not null
 )
 
-select * from Carreras;
-show tables;
+select * from Alumnos;

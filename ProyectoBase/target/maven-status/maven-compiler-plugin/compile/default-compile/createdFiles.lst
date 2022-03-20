@@ -1,10 +1,13 @@
 com\ipn\mx\modelos\entidades\Carrera.class
-com\ipn\mx\modelos\dao\CarreraDAO.class
+com\ipn\mx\controlador\ListadoAlumnos.class
 com\ipn\mx\controlador\EliminarCarrera.class
-com\ipn\mx\modelos\dao\AlumnoDAO.class
+com\ipn\mx\controlador\AgregarAlumno.class
 com\ipn\mx\modelos\dto\AlumnoDTO.class
-com\ipn\mx\modelos\entidades\Alumno.class
 com\ipn\mx\controlador\ActualizarCarrera.class
-com\ipn\mx\controlador\AgregarServlet.class
 com\ipn\mx\controlador\ListadoServlet.class
 com\ipn\mx\modelos\dto\CarreraDTO.class
+com\ipn\mx\controlador\MostrarCarrera.class
+com\ipn\mx\modelos\dao\CarreraDAO.class
+com\ipn\mx\modelos\dao\AlumnoDAO.class
+com\ipn\mx\modelos\entidades\Alumno.class
+com\ipn\mx\controlador\AgregarServlet.class

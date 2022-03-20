@@ -53,7 +53,7 @@ public class AgregarAlumno extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("utf-8");
-       String idCarrera="";
+       
         
         List carrerasID = new ArrayList(); 
             CarreraDAO carreraDAO = new CarreraDAO();
@@ -105,7 +105,7 @@ public class AgregarAlumno extends HttpServlet {
             out.println("<div class='container'>");
             out.println("<main>");
             out.println("<section>");
-            out.println("<h1 class='d-md-flex justify-content-md-center'>Registro de un nuevo Alumno</h1>");
+            out.println("<h1 class='d-md-flex justify-content-md-center mt-3'>Registro de un nuevo Alumno</h1>");
             out.println("<form method='post' action='/ProyectoBase/AgregarAlumno' name='frmDatos' accept-charset='UTF-8'>");
             out.println("<div class='mb-3'>");
             out.println("<label for='txtNombreAlumno' class='form-label'>Nombre del Alumno: </label>");

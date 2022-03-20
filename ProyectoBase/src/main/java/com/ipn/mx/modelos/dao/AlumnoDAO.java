@@ -119,6 +119,7 @@ public class AlumnoDAO {
             if(rs.next()){
                 alumndodto = new AlumnoDTO();
                 alumndodto.getEntidad().setIdAlumno(rs.getLong("idAlumno"));
+                alumndodto.getEntidad().setNombreAlumno(rs.getString("nombreAlumno"));
                 alumndodto.getEntidad().setPaternoAlumno(rs.getString("paternoAlumno"));
                 alumndodto.getEntidad().setMaternoAlumno(rs.getString("maternoAlumno"));
                 alumndodto.getEntidad().setEmailAlumno(rs.getString("emailAlumno"));
