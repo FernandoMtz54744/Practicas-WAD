@@ -1,10 +1,13 @@
 D:\Fer_Mtz\Desktop\3CM2\WAD\Ejercicios\ProyectoBase\src\main\java\com\ipn\mx\controlador\ActualizarCarrera.java
+D:\Fer_Mtz\Desktop\3CM2\WAD\Ejercicios\ProyectoBase\src\main\java\com\ipn\mx\controlador\EliminarAlumno.java
 D:\Fer_Mtz\Desktop\3CM2\WAD\Ejercicios\ProyectoBase\src\main\java\com\ipn\mx\modelos\dto\AlumnoDTO.java
 D:\Fer_Mtz\Desktop\3CM2\WAD\Ejercicios\ProyectoBase\src\main\java\com\ipn\mx\modelos\dto\CarreraDTO.java
 D:\Fer_Mtz\Desktop\3CM2\WAD\Ejercicios\ProyectoBase\src\main\java\com\ipn\mx\controlador\ListadoServlet.java
+D:\Fer_Mtz\Desktop\3CM2\WAD\Ejercicios\ProyectoBase\src\main\java\com\ipn\mx\controlador\ActualizarAlumno.java
 D:\Fer_Mtz\Desktop\3CM2\WAD\Ejercicios\ProyectoBase\src\main\java\com\ipn\mx\controlador\AgregarAlumno.java
 D:\Fer_Mtz\Desktop\3CM2\WAD\Ejercicios\ProyectoBase\src\main\java\com\ipn\mx\controlador\AgregarServlet.java
 D:\Fer_Mtz\Desktop\3CM2\WAD\Ejercicios\ProyectoBase\src\main\java\com\ipn\mx\controlador\EliminarCarrera.java
+D:\Fer_Mtz\Desktop\3CM2\WAD\Ejercicios\ProyectoBase\src\main\java\com\ipn\mx\controlador\MostrarAlumno.java
 D:\Fer_Mtz\Desktop\3CM2\WAD\Ejercicios\ProyectoBase\src\main\java\com\ipn\mx\modelos\entidades\Alumno.java
 D:\Fer_Mtz\Desktop\3CM2\WAD\Ejercicios\ProyectoBase\src\main\java\com\ipn\mx\controlador\ListadoAlumnos.java
 D:\Fer_Mtz\Desktop\3CM2\WAD\Ejercicios\ProyectoBase\src\main\java\com\ipn\mx\modelos\entidades\Carrera.java
