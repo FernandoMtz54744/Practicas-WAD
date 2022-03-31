@@ -1,6 +1,0 @@
-com\ipn\mx\modelos\entidades\Carrera.class
-com\ipn\mx\modelos\dao\CarreraDAO.class
-com\ipn\mx\modelos\dto\AlumnoDTO.class
-com\ipn\mx\modelos\entidades\Alumno.class
-com\ipn\mx\modelos\dao\AlumnoDAO.class
-com\ipn\mx\modelos\dto\CarreraDTO.class
