@@ -186,8 +186,8 @@ public class CategoriaServlet extends HttpServlet {
     private void almacenarCategoria(HttpServletRequest request, HttpServletResponse response) {
         CategoriaDAO dao = new CategoriaDAO();
         CategoriaDTO dto = new CategoriaDTO();
-       
-        if (request.getAttribute("dto") == null) {
+        
+        if (request.getParameter("txtId").isEmpty()) {
             
             dto.getEntidad().setNombreCategoria(request.getParameter("txtNombre"));
             dto.getEntidad().setDescripcionCategoria(request.getParameter("txtDescripcion"));

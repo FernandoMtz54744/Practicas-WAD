@@ -15,6 +15,9 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" ></script>
     </head>
     <body>
+        <%
+            String accion  = request.getParameter("accion");
+        %>
         <div class="container">
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
                 <div class="container-fluid">
@@ -44,14 +47,27 @@
                 </div>
                 <div class="card-body">
                     <form method="post" action="CategoriaServlet?accion=guardar">
-                         <div class="mb-3">
+                        <%
+                            if(accion.equals("nuevo")){
+                        %>
+                            <div class="mb-3" hidden="true">
+                                <label for="txtId" class="form-label">Clave Categor&iacute;a</label>
+                                <input type="text" class="form-control" id="txtId" name="txtId" 
+                                       value="${dto.entidad.idCategoria}"
+                                       placeholder="Nombre de la Categoría"
+
+                                       />
+                            </div>
+                        <%}else{%>
+                        <div class="mb-3" >
                             <label for="txtId" class="form-label">Clave Categor&iacute;a</label>
                             <input type="text" class="form-control" id="txtId" name="txtId" 
                                    value="${dto.entidad.idCategoria}"
                                    placeholder="Nombre de la Categoría"
-                                   
+                                   readonly
                                    />
                         </div>
+                        <%}%>
                         
                         <div class="mb-3">
                             <label for="txtNombre" class="form-label">Nombre Categor&iacute;a</label>

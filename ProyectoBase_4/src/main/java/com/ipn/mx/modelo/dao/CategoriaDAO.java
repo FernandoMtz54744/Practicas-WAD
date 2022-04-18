@@ -30,8 +30,8 @@ public class CategoriaDAO {
     
      private void obtenerConexion() {
         //obtener conexion
-        String usuario = "ezja";
-        String clave = "ezja";
+        String usuario = "root";
+        String clave = "n0m3l0";
         String url = "jdbc:mysql://localhost:3306/ProyectoBase4?serverTimezone=America/Mexico_City&allowPublicKeyRetrieval=true&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&useSSL=false";
         //String url = "jdbc:mysql://localhost:3306/EscuelaWeb?
         //serverTimeZone=America/Mexico_City&allowPublicKeyRetrieval=true&
@@ -65,9 +65,9 @@ public class CategoriaDAO {
        CallableStatement cs = null;
        try{
            cs = conexion.prepareCall(SQL_UPDATE);
-           cs.setString(1, dto.getEntidad().getNombreCategoria());
-           cs.setString(2, dto.getEntidad().getDescripcionCategoria());
-           cs.setInt(3, dto.getEntidad().getIdCategoria());
+           cs.setInt(1, dto.getEntidad().getIdCategoria());
+           cs.setString(2, dto.getEntidad().getNombreCategoria());
+           cs.setString(3, dto.getEntidad().getDescripcionCategoria());
            cs.executeUpdate();
        }finally{
            if (cs != null) cs.close();
@@ -77,6 +77,7 @@ public class CategoriaDAO {
    public void delete(CategoriaDTO dto) throws SQLException{
        obtenerConexion();
        CallableStatement cs = null;
+               
        try{
            cs = conexion.prepareCall(SQL_DELETE);
            cs.setInt(1, dto.getEntidad().getIdCategoria());
