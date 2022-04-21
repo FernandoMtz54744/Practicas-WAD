@@ -28,7 +28,7 @@ public class CategoriaDAO {
  
     private Connection conexion;
     
-     private void obtenerConexion() {
+     public Connection obtenerConexion() {
         //obtener conexion
         String usuario = "root";
         String clave = "n0m3l0";
@@ -45,6 +45,7 @@ public class CategoriaDAO {
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(CategoriaDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
+        return conexion;
     }
 
    public void create(CategoriaDTO dto) throws SQLException{

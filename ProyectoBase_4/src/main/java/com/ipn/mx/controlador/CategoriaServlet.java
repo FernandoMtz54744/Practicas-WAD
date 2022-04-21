@@ -8,16 +8,20 @@ import com.ipn.mx.modelo.dao.CategoriaDAO;
 import com.ipn.mx.modelo.dto.CategoriaDTO;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.ServletOutputStream;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperRunManager;
 
 /*
 import javax.servlet.ServletException;
@@ -229,8 +233,29 @@ public class CategoriaServlet extends HttpServlet {
     }
 
     private void mostrarReporte(HttpServletRequest request, HttpServletResponse response) {
+       CategoriaDAO dao = new CategoriaDAO();
+       ServletOutputStream sos = null;
+       try{
+            sos = response.getOutputStream(); 
+            File reporte = new File(getServletConfig().getServletContext().getRealPath("/reportes/Reportes.jasper"));   
+            byte[] b = JasperRunManager.runReportToPdf(reporte.getPath(), null, dao.obtenerConexion()); 
+            response.setContentType("application/pdf");
+            response.setContentLength(b.length);
+            sos.write(b,0,b.length);
+            sos.flush();
+            sos.close();
+        }catch(IOException | JRException e){
+            System.out.println("Error al mostrar reporte");
+            e.getStackTrace();
+       }finally{
+           try{
+               sos.close();
+           }catch(IOException ex){
+                System.out.println("Error al cerrar sos");
+           }
+       }
        
-        
+
     }
 
     private void mostrarGrafica(HttpServletRequest request, HttpServletResponse response) {

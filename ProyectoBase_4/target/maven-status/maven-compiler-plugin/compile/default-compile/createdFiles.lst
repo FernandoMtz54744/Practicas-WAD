@@ -1,0 +1,4 @@
+com\ipn\mx\controlador\CategoriaServlet.class
+com\ipn\mx\modelo\dao\CategoriaDAO.class
+com\ipn\mx\modelo\dto\CategoriaDTO.class
+com\ipn\mx\modelo\entidades\Categoria.class
