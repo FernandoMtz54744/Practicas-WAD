@@ -229,7 +229,8 @@ public class CategoriaServlet extends HttpServlet {
     }
 
     private void mostrarReporte(HttpServletRequest request, HttpServletResponse response) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+       
+        
     }
 
     private void mostrarGrafica(HttpServletRequest request, HttpServletResponse response) {
