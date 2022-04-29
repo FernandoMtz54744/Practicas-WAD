@@ -16,12 +16,12 @@
     
     <dependencies>
         <!--
-<dependency>
-    <groupId>javax</groupId>
-    <artifactId>javaee-web-api</artifactId>
-    <version>7.0</version>
-    <scope>provided</scope>
-</dependency>
+        <dependency>
+            <groupId>javax</groupId>
+            <artifactId>javaee-web-api</artifactId>
+            <version>7.0</version>
+            <scope>provided</scope>
+        </dependency>
         -->
         <dependency>
             <groupId>jakarta.servlet</groupId>
@@ -43,7 +43,13 @@
             <version>42.3.3</version>
         </dependency>
 
-
+        <!-- https://mvnrepository.com/artifact/com.sun.mail/javax.mail -->
+        <dependency>
+            <groupId>com.sun.mail</groupId>
+            <artifactId>javax.mail</artifactId>
+            <version>1.6.2</version>
+        </dependency>
+        
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
