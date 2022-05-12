@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+  <Resource id="jdbc/ProyectoBase5" type="javax.sql.DataSource">#Thu May 12 07:33:22 CDT 2022
+jdbcDriver=com.mysql.cj.jdbc.Driver
+password=root
+userName=root
+jdbcUrl=jdbc\:mysql\://localhost\:3306/mysql?zeroDateTimeBehavior\=CONVERT_TO_NULL
+</Resource>
+  <Resource id="jdbc/ProyectoBase_5" type="javax.sql.DataSource">#Thu May 12 07:39:55 CDT 2022
+jdbcDriver=com.mysql.cj.jdbc.Driver
+password=root
+userName=root
+jdbcUrl=jdbc\:mysql\://localhost\:3306/ProyectoBase5?zeroDateTimeBehavior\=CONVERT_TO_NULL
+</Resource>
+</resources>
