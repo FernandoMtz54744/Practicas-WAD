@@ -1,9 +1,16 @@
-package util;
+package com.ipn.mx.utilerias;
+
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.Metadata;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+
+/**
+ * @author Cortes Lopez Jaime Alejandro
+ * @author Godinez Montero Esmeralda
+ * @author Fernando Mtz
+ */
 
 public class HibernateUtil {
 
@@ -18,7 +25,6 @@ public class HibernateUtil {
                 MetadataSources ms = new MetadataSources(registry);
                 Metadata m = ms.getMetadataBuilder().build();
                 sessionFactory = m.getSessionFactoryBuilder().build();
-
             } catch (Exception e) {
                 e.printStackTrace();
                 if (registry != null) {

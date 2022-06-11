@@ -1,23 +1,28 @@
-package modelo.dao;
+package com.ipn.mx.modelo.dao;
 
+import com.ipn.mx.modelo.entidades.Usuario;
+import com.ipn.mx.utilerias.HibernateUtil;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import modelo.entidades.Alumno;
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import org.hibernate.HibernateException;
 import org.hibernate.query.Query;
-import util.HibernateUtil;
 
-public class AlumnoDAO {
-
-    public void create(Alumno a) {
+/**
+ * @author Cortes Lopez Jaime Alejandro
+ * @author Godinez Montero Esmeralda
+ * @author Fernando Mtz
+ */
+public class UsuarioDao {
+    
+    public void create(Usuario u) {
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         Transaction transaction = session.getTransaction();
         try {
             transaction.begin();
-            session.persist(a);
+            session.persist(u);
             transaction.commit();
         } catch (HibernateException he) {
             if (transaction.isActive()) {
@@ -26,16 +31,15 @@ public class AlumnoDAO {
             he.printStackTrace();
             System.out.println("Error: " + he.getMessage());
         }
-
     }
-
-    public List readAll() {
+    
+     public List readAll() {
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         Transaction transaction = session.getTransaction();
         List resultados = new ArrayList();
         try {
             transaction.begin();
-            Query q = session.createQuery("from Alumno", Alumno.class);
+            Query q = session.createQuery("from Usuario", Usuario.class);
             resultados = q.list();
             transaction.commit();
         } catch (HibernateException he) {
@@ -46,15 +50,13 @@ public class AlumnoDAO {
         return resultados;
     }
     
-    public static void main(String[] args) {
-        AlumnoDAO dao  = new AlumnoDAO();
-        Alumno a = new Alumno();
-        a.setNombreAlumno("Fernando");
-        a.setPaternoAlumno("Martinez");
-        a.setMaternoAlumno("Martinez");
-        a.setEmailAlumno("fer_f@outlook.com");
-        a.setFechaCreacion(new Date());
-        dao.create(a);
-    }
-
+     public static void main(String[] args) {
+        UsuarioDao dao  = new UsuarioDao();
+        Usuario u = new Usuario();
+        u.setUsuario("fer");
+        u.setCorreo("fer_f@outlook.com");
+        u.setPass("contraxd");
+        dao.create(u);
+    } 
+    
 }
