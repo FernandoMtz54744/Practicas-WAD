@@ -3,7 +3,6 @@ package com.ipn.mx.modelo.dao;
 import com.ipn.mx.modelo.entidades.Usuario;
 import com.ipn.mx.utilerias.HibernateUtil;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;

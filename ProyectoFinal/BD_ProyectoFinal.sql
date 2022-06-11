@@ -8,4 +8,4 @@ create table Usuario(
     correo varchar(50) not null
 );
 
-select * from Usuario;
+select * from Usuario;	
