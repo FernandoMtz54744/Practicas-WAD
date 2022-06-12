@@ -12,9 +12,6 @@
 <%
     HttpSession sesion = request.getSession(false);
     Usuario usuario = (Usuario) sesion.getAttribute("usuario");
-    if(usuario == null){
-        response.sendRedirect("/ProyectoFinal/index.html");
-    }
 %>
 
 <!DOCTYPE html>
