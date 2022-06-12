@@ -48,14 +48,33 @@ public class UsuarioDao {
         }
         return resultados;
     }
+     
+    public Usuario login(Usuario u){
+        String query = "From Usuario u Where u.correo = :correo and u.pass = :pass";
+        Usuario usuarioLogin = null;
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        Transaction transaction = session.getTransaction();
+        try {
+            transaction.begin();
+            Query q = session.createQuery(query, Usuario.class);
+            q.setParameter("correo", u.getCorreo());
+            q.setParameter("pass", u.getPass());
+            usuarioLogin = (Usuario) q.uniqueResult();
+            transaction.commit();
+        } catch (HibernateException he) {
+            if (transaction != null && transaction.isActive()) {
+                transaction.rollback();
+            }
+        }
+        return usuarioLogin;
+    }
     
      public static void main(String[] args) {
         UsuarioDao dao  = new UsuarioDao();
         Usuario u = new Usuario();
-        u.setUsuario("fer");
         u.setCorreo("fer_f@outlook.com");
-        u.setPass("contraxd");
-        dao.create(u);
+        u.setPass("contra");
+        System.out.println("Login: " + dao.login(u));
     } 
     
 }

@@ -4,14 +4,12 @@ import com.ipn.mx.modelo.dao.UsuarioDao;
 import com.ipn.mx.modelo.entidades.Usuario;
 import jakarta.servlet.RequestDispatcher;
 import java.io.IOException;
-import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import jakarta.servlet.http.HttpSession;
 
 /**
  * @author Cortes Lopez Jaime Alejandro
@@ -38,6 +36,8 @@ public class UsuarioServlet extends HttpServlet {
         String accion = request.getParameter("accion");
         if(accion.equals("Registrar Usuario")){
             registrarUsuario(request, response);
+        }else if(accion.equals("Login")){
+            login(request,response);
         }
        
     }
@@ -82,19 +82,43 @@ public class UsuarioServlet extends HttpServlet {
     }// </editor-fold>
 
     private void registrarUsuario(HttpServletRequest request, HttpServletResponse response) {
+        UsuarioDao dao = new UsuarioDao();
+        Usuario u = new Usuario();
+        u.setUsuario(request.getParameter("usuario"));
+        u.setCorreo(request.getParameter("correo"));
+        u.setPass(request.getParameter("pass"));
+        dao.create(u);
+
         try {
+            response.sendRedirect(request.getContextPath() + "/Usuario/loginUsuario.html");
+        } catch (IOException ex) {
+            System.out.println("Error registrarUsuario en UsuarioServlet: " + ex.getMessage());
+        }
+       
+    }
+    
+    private void login(HttpServletRequest request, HttpServletResponse response) {
             UsuarioDao dao = new UsuarioDao();
             Usuario u = new Usuario();
-            u.setUsuario(request.getParameter("usuario"));
+            Usuario usuarioLogin = null;
             u.setCorreo(request.getParameter("correo"));
             u.setPass(request.getParameter("pass"));
-            dao.create(u);
-        
-            RequestDispatcher rd = request.getRequestDispatcher("/login.html");
-            rd.forward(request, response);
-        } catch (ServletException | IOException ex) {
-            /*Error de version de compilacion con java 52: Instalar JDK 18 y actualizar tomee con dicha version*/
-            System.out.println("Error al registrar usuario: " + ex.getMessage());
-        }
+            usuarioLogin = dao.login(u);
+            try{
+                if(usuarioLogin != null){//Login exitoso
+                    //Se sube el usuario a la sesion
+                    HttpSession sesion = request.getSession();
+                    sesion.setAttribute("usuario", usuarioLogin);
+                    //Se redirecciona al inicio del usuario
+                    response.sendRedirect(request.getContextPath() + "/Usuario/inicioUsuario.jsp");
+                }else{//Login incorrecto
+                    response.sendRedirect(request.getContextPath() + "/Usuario/loginUsuario.html");
+                }
+            }catch(Exception e){
+                System.out.println("Error login en UsuarioServlet");
+            }
+            
+       
+    
     }
 }
