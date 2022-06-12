@@ -58,4 +58,4 @@ insert into Categoria(categoria) values('Gourmet');
 insert into Categoria(categoria) values('Mariscos');
 insert into Categoria(categoria) values('Desayunos');
 
-select * from Usuario;
+select * from Restaurante;
