@@ -34,5 +34,5 @@ public class Comentario {
     private int idUsuario;
  
     @Column(name = "idPlatillo", nullable=false)
-    private String idPlatillo;
+    private int idPlatillo;
 }

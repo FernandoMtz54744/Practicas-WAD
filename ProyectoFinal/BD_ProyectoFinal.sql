@@ -28,8 +28,8 @@ create table Categoria(
 create table Platillo(
 	idPlatillo int auto_increment primary key not null,
     nombre varchar(50) not null, 
-    descripion varchar(50) not null,
-    foto blob,
+    descripcion varchar(50) not null,
+    foto mediumblob,
     nombreFoto varchar(50) not null,
     idRestaurante int not null,
     idCategoria int not null,
@@ -43,7 +43,7 @@ create table Comentario(
     idUsuario int not null,
     idPlatillo int not null,
     foreign key (idUsuario) references Usuario(idUsuario),
-    foreign key (idPlatillo) references Platillo(idPlatillo)
+    foreign key (idPlatillo) references Platillo(idPlatillo) ON DELETE CASCADE
 );
 
 insert into Categoria(categoria) values('Rapida');
@@ -57,5 +57,3 @@ insert into Categoria(categoria) values('Carnes');
 insert into Categoria(categoria) values('Gourmet');
 insert into Categoria(categoria) values('Mariscos');
 insert into Categoria(categoria) values('Desayunos');
-
-select * from Restaurante;

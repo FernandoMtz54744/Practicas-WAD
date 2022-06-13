@@ -25,5 +25,7 @@
         <property name="hibernate.dbcp.maxWaitMillis">-1</property>
         <mapping class="com.ipn.mx.modelo.entidades.Usuario" />
         <mapping class="com.ipn.mx.modelo.entidades.Restaurante" />
+        <mapping class="com.ipn.mx.modelo.entidades.Platillo" />
+        <mapping class="com.ipn.mx.modelo.entidades.Comentario" />
     </session-factory>
 </hibernate-configuration>

@@ -69,7 +69,7 @@ public class UsuarioDao {
         return usuarioLogin;
     }
     
-     public static void main(String[] args) {
+     public static void main(String[] args) { //Este main se puede eliminar, es solo de prueba
         UsuarioDao dao  = new UsuarioDao();
         Usuario u = new Usuario();
         u.setCorreo("fer_f@outlook.com");
