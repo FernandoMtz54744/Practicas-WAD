@@ -1,10 +1,12 @@
 package com.ipn.mx.modelo.dao;
 
 import com.ipn.mx.modelo.entidades.Platillo;
+import com.ipn.mx.modelo.entidades.PlatilloView;
 import com.ipn.mx.utilerias.HibernateUtil;
 import java.io.File;
 import java.nio.file.Files;
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.List;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -84,15 +86,32 @@ public class PlatilloDao {
         }
     }
     
+    public List readAllPlatilloView() {
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        Transaction transaction = session.getTransaction();
+        List resultados = new ArrayList();
+        try {
+            transaction.begin();
+            Query q = session.createQuery("from PlatilloView", PlatilloView.class);
+            resultados = q.list();
+            transaction.commit();
+        } catch (HibernateException he) {
+            if (transaction != null && transaction.isActive()) {
+                transaction.rollback();
+            }
+        }
+        return resultados;
+    }
+    
     public static void main(String[] args) { //Este main se puede eliminar, es de prueba
         Platillo p = new Platillo();
         PlatilloDao dao = new PlatilloDao();
-        
-        p.setNombre("Taquitos");
-        p.setDescripcion("Tacos de carne");
-        p.setNombreFoto("Taco.jpeg");
+        /*
+        p.setNombre("Takuche");
+        p.setDescripcion("Tacos de perro");
+        p.setNombreFoto("Taco.jpg");
         try{
-            p.setFoto(Files.readAllBytes(new File("D:\\Fer_Mtz\\Desktop\\taco.jpeg").toPath()));
+            p.setFoto(Files.readAllBytes(new File("D:\\Fer_Mtz\\Desktop\\taco.jpg").toPath()));
         }catch(Exception e){
             System.out.println("Error al subir foto");
         }
@@ -100,8 +119,11 @@ public class PlatilloDao {
         p.setIdRestaurante(1);
         p.setIdCategoria(2);
         
-        dao.create(p);
-
+        dao.create(p);*/
+        PlatilloDao platilloDao = new PlatilloDao();
+        List<PlatilloView> platillos = platilloDao.readAllPlatilloView();
+        String encode = Base64.getEncoder().encodeToString(platillos.get(0).getFoto());
+        System.out.println(encode);
         
     }
 }

@@ -21,7 +21,7 @@ create table Restaurante(
 );
 
 create table Categoria(
-	idCategoria int auto_increment primary key not null,
+	idCategoria int primary key not null,
     categoria varchar(50) not null
 );
 
@@ -46,14 +46,26 @@ create table Comentario(
     foreign key (idPlatillo) references Platillo(idPlatillo) ON DELETE CASCADE
 );
 
-insert into Categoria(categoria) values('Rapida');
-insert into Categoria(categoria) values('Mexicana');
-insert into Categoria(categoria) values('Italiana');
-insert into Categoria(categoria) values('Asiatica');
-insert into Categoria(categoria) values('Postres');
-insert into Categoria(categoria) values('Vegetariana');
-insert into Categoria(categoria) values('Brasileña');
-insert into Categoria(categoria) values('Carnes');
-insert into Categoria(categoria) values('Gourmet');
-insert into Categoria(categoria) values('Mariscos');
-insert into Categoria(categoria) values('Desayunos');
+insert into Categoria(idCategoria, categoria) values(1,'Rapida');
+insert into Categoria(idCategoria, categoria)  values(2,'Mexicana');
+insert into Categoria(idCategoria, categoria)  values(3,'Italiana');
+insert into Categoria(idCategoria, categoria)  values(4,'Asiatica');
+insert into Categoria(idCategoria, categoria)  values(5,'Postres');
+insert into Categoria(idCategoria, categoria)  values(6,'Vegetariana');
+insert into Categoria(idCategoria, categoria)  values(7,'Brasileña');
+insert into Categoria(idCategoria, categoria)  values(8,'Carnes');
+insert into Categoria(idCategoria, categoria)  values(9,'Gourmet');
+insert into Categoria(idCategoria, categoria)  values(10,'Mariscos');
+insert into Categoria(idCategoria, categoria)  values(11,'Desayunos');
+
+create view PlatilloView as
+select P.idPlatillo, P.nombre as nombrePlatillo, P.descripcion, P.foto, P.nombreFoto, 
+P.idRestaurante, R.nombre as nombreRestaurante, 
+P.idCategoria, C.categoria
+from platillo P inner Join Restaurante R on P.idRestaurante = R.idRestaurante inner Join Categoria C on P.idCategoria = C.idCategoria;
+
+select * from PlatilloView;
+
+select * from restaurante;
+insert into Restaurante(nombre, correo, pass, descripcion, web, horario, telefono) 
+values('Takos lokos', 'takos@gmail.com', 'pass', 'Takos de pastor', 'takos.com', '7 am a 8 pm', '5565122061');

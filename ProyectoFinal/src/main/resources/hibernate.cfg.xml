@@ -27,5 +27,7 @@
         <mapping class="com.ipn.mx.modelo.entidades.Restaurante" />
         <mapping class="com.ipn.mx.modelo.entidades.Platillo" />
         <mapping class="com.ipn.mx.modelo.entidades.Comentario" />
+        <mapping class="com.ipn.mx.modelo.entidades.PlatilloView" />
+        <mapping class="com.ipn.mx.modelo.entidades.Categoria" />
     </session-factory>
 </hibernate-configuration>
