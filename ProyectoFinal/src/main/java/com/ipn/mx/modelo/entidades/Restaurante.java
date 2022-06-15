@@ -23,7 +23,7 @@ import lombok.NoArgsConstructor;
 @Data
 public class Restaurante {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "idRestaurante")
     private int idRestaurante;
     

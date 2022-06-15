@@ -125,7 +125,7 @@ public class PlatilloDao {
     public static void main(String[] args) { //Este main se puede eliminar, es de prueba
         Platillo p = new Platillo();
         PlatilloDao dao = new PlatilloDao();
-        /*
+        
         p.setNombre("Takuche");
         p.setDescripcion("Tacos de perro");
         p.setNombreFoto("Taco.jpg");
@@ -138,8 +138,8 @@ public class PlatilloDao {
         p.setIdRestaurante(1);
         p.setIdCategoria(2);
         
-        dao.create(p);*/
-        System.out.println(dao.readOnePlatilloView(2));
+        dao.create(p);
+        //System.out.println(dao.readOnePlatilloView(2));
         
     }
 }

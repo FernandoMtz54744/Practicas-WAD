@@ -23,7 +23,7 @@ import lombok.NoArgsConstructor;
 @Data
 public class Categoria {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "idCategoria")
     private int idCategoria;
     

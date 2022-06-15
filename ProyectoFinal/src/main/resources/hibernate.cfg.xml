@@ -5,16 +5,16 @@
 <hibernate-configuration>
     <session-factory>
         <property name="connection.driver_class">
-            com.mysql.cj.jdbc.Driver
+            org.postgresql.Driver
         </property>
         <property name="connection.url">
-            jdbc:mysql://localhost:3306/PF_WAD
+            jdbc:postgresql://localhost:5432/PF_WAD
         </property>
-        <property name="connection.username">root</property>
+        <property name="connection.username">postgres</property>
         <property name="connection.password">n0m3l0</property>
         
         <property name="connection.pool_size">1</property>
-        <property name="dialect">org.hibernate.dialect.MySQL8Dialect</property>
+        <property name="dialect">org.hibernate.dialect.PostgreSQLDialect</property>
         <property name="show_sql">true</property>
         <property name="current_session_context_class">thread</property>
         <property name="hbm2ddl.auto">update</property>

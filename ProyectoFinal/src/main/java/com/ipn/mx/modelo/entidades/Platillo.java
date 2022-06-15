@@ -25,7 +25,7 @@ import lombok.NoArgsConstructor;
 @Data
 public class Platillo {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "idPlatillo")
     private int idPlatillo;
     
