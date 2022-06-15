@@ -8,10 +8,10 @@
             org.postgresql.Driver
         </property>
         <property name="connection.url">
-            jdbc:postgresql://localhost:5432/PF_WAD
+            jdbc:postgresql://ec2-54-147-33-38.compute-1.amazonaws.com:5432/d2hqg08386du81
         </property>
-        <property name="connection.username">postgres</property>
-        <property name="connection.password">n0m3l0</property>
+        <property name="connection.username">dzcgkwhyvlgvpu</property>
+        <property name="connection.password">ccac6815fa6a6b8438d9888b0940e3c7f71a48d7e310e4152a80faee024928d9</property>
         
         <property name="connection.pool_size">1</property>
         <property name="dialect">org.hibernate.dialect.PostgreSQLDialect</property>
