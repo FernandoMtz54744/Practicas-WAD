@@ -68,4 +68,28 @@ public class RestauranteDao {
         }
         return restauranteLogin;
     }
+    
+    public Restaurante readOneRestaurante(int idRestaurante){
+        String query = "From Restaurante r Where r.idRestaurante = :idRestaurante";
+        Restaurante restaurante = null;
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        Transaction transaction = session.getTransaction();
+        try {
+            transaction.begin();
+            Query q = session.createQuery(query, Restaurante.class);
+            q.setParameter("idRestaurante", idRestaurante);
+            restaurante = (Restaurante) q.uniqueResult();
+            transaction.commit();
+        } catch (HibernateException he) {
+            if (transaction != null && transaction.isActive()) {
+                transaction.rollback();
+            }
+        }
+        return restaurante;
+    }
+    
+    public static void main(String[] args) {
+        RestauranteDao dao = new RestauranteDao();
+        System.out.println(dao.readOneRestaurante(1));
+    }
 }

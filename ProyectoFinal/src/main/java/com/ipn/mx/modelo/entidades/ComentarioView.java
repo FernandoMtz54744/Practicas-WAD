@@ -21,7 +21,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class Comentario {
+public class ComentarioView {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idComentario")
@@ -35,6 +35,9 @@ public class Comentario {
     
     @Column(name = "idUsuario", nullable=false)
     private int idUsuario;
+    
+    @Column(name = "usuario", length =50, nullable=false)
+    private String usuario;
  
     @Column(name = "idPlatillo", nullable=false)
     private int idPlatillo;

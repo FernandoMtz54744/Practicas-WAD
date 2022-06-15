@@ -44,7 +44,7 @@
                     </div>
                     <p class="nombrePlatillo"><%=platillos.get(i).getNombrePlatillo()%></p>
                     <p class="restaurantePlatillo"><%=platillos.get(i).getNombreRestaurante()%></p>
-                    <a href="" class="verPlatillo">Ver info</a>
+                    <a href="InfoPlatillo.jsp?idPlatillo=<%=platillos.get(i).getIdPlatillo()%>" class="verPlatillo">Ver info</a>
                 </div> 
             <%}%>
         </div>

@@ -29,5 +29,6 @@
         <mapping class="com.ipn.mx.modelo.entidades.Comentario" />
         <mapping class="com.ipn.mx.modelo.entidades.PlatilloView" />
         <mapping class="com.ipn.mx.modelo.entidades.Categoria" />
+        <mapping class="com.ipn.mx.modelo.entidades.ComentarioView" />
     </session-factory>
 </hibernate-configuration>

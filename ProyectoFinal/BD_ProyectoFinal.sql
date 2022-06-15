@@ -36,10 +36,10 @@ create table Platillo(
     foreign key (idRestaurante) references Restaurante(idRestaurante),
     foreign key (idCategoria) references Categoria(idCategoria)
 );
-
 create table Comentario(
 	idComentario int auto_increment primary key not null,
     comentario varchar(100) not null,
+    calificacion int not null,
     idUsuario int not null,
     idPlatillo int not null,
     foreign key (idUsuario) references Usuario(idUsuario),
@@ -64,8 +64,17 @@ P.idRestaurante, R.nombre as nombreRestaurante,
 P.idCategoria, C.categoria
 from platillo P inner Join Restaurante R on P.idRestaurante = R.idRestaurante inner Join Categoria C on P.idCategoria = C.idCategoria;
 
-select * from PlatilloView;
+Create view ComentarioView as 
+Select C.idComentario, C.comentario, C.calificacion, C.idPlatillo,
+C.idUsuario, U.usuario from Comentario C inner Join Usuario U on C.idUsuario = U.idUsuario;
 
-select * from restaurante;
+select * from PlatilloView;
+select * from ComentarioView;
+
 insert into Restaurante(nombre, correo, pass, descripcion, web, horario, telefono) 
 values('Takos lokos', 'takos@gmail.com', 'pass', 'Takos de pastor', 'takos.com', '7 am a 8 pm', '5565122061');
+
+select * from restaurante;
+select * from usuario;
+
+insert into Comentario(comentario, calificacion, idUsuario, idPlatillo) values('Buenos takos', 5, 1,2);

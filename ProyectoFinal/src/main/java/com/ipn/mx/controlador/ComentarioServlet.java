@@ -1,15 +1,14 @@
 package com.ipn.mx.controlador;
 
-import com.ipn.mx.modelo.dao.UsuarioDao;
-import com.ipn.mx.modelo.entidades.Usuario;
-import jakarta.servlet.RequestDispatcher;
+import com.ipn.mx.modelo.dao.ComentarioDao;
+import com.ipn.mx.modelo.entidades.Comentario;
 import java.io.IOException;
-import jakarta.servlet.ServletException;
+import java.io.PrintWriter;
 import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
 
 /**
  * @author Cortes Lopez Jaime Alejandro
@@ -17,8 +16,8 @@ import jakarta.servlet.http.HttpSession;
  * @author Fernando Mtz
  */
 
-@WebServlet(name = "UsuarioServlet", urlPatterns = {"/UsuarioServlet"})
-public class UsuarioServlet extends HttpServlet {
+@WebServlet(name = "ComentarioServlet", urlPatterns = {"/ComentarioServlet"})
+public class ComentarioServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -32,14 +31,10 @@ public class UsuarioServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
         String accion = request.getParameter("accion");
-        if(accion.equals("Registrar Usuario")){
-            registrarUsuario(request, response);
-        }else if(accion.equals("Login")){
-            login(request,response);
+        if(accion.equals("Comentar")){
+            registrarComentario(request, response);
         }
-       
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -80,45 +75,21 @@ public class UsuarioServlet extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
-    private void registrarUsuario(HttpServletRequest request, HttpServletResponse response) {
-        UsuarioDao dao = new UsuarioDao();
-        Usuario u = new Usuario();
-        u.setUsuario(request.getParameter("usuario"));
-        u.setCorreo(request.getParameter("correo"));
-        u.setPass(request.getParameter("pass"));
-        dao.create(u);
-
+    
+    private void registrarComentario(HttpServletRequest request, HttpServletResponse response) {
+        ComentarioDao dao = new ComentarioDao();
+        Comentario c = new Comentario();
+        c.setComentario(request.getParameter("comentario"));
+        c.setCalificacion(Integer.parseInt(request.getParameter("calificacion")));
+        c.setIdUsuario(Integer.parseInt(request.getParameter("idUsuario")));
+        c.setIdPlatillo(Integer.parseInt(request.getParameter("idPlatillo")));
+        dao.create(c);
+        
         try {
-            response.sendRedirect(request.getContextPath() + "/Usuario/loginUsuario.html");
+            response.sendRedirect(request.getContextPath() + "/Platillo/InfoPlatillo.jsp?idPlatillo="+c.getIdPlatillo());
         } catch (IOException ex) {
-            System.out.println("Error registrarUsuario en UsuarioServlet: " + ex.getMessage());
+            System.out.println("Error registrarComentario en ComentarioServlet: " + ex.getMessage());
         }
-       
     }
-    
-    private void login(HttpServletRequest request, HttpServletResponse response) {
-            UsuarioDao dao = new UsuarioDao();
-            Usuario u = new Usuario();
-            Usuario usuarioLogin = null;
-            u.setCorreo(request.getParameter("correo"));
-            u.setPass(request.getParameter("pass"));
-            usuarioLogin = dao.login(u);
-            try{
-                if(usuarioLogin != null){//Login exitoso
-                    //Se sube el usuario a la sesion
-                    HttpSession sesion = request.getSession();
-                    sesion.setAttribute("usuario", usuarioLogin);
-                    //Se redirecciona al inicio del usuario
-                    response.sendRedirect(request.getContextPath() + "/");
-                }else{//Login incorrecto
-                    response.sendRedirect(request.getContextPath() + "/Usuario/loginUsuario.html");
-                }
-            }catch(Exception e){
-                System.out.println("Error login en UsuarioServlet");
-            }
-            
-       
-    
-    }
+
 }

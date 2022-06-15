@@ -72,9 +72,10 @@ public class UsuarioDao {
      public static void main(String[] args) { //Este main se puede eliminar, es solo de prueba
         UsuarioDao dao  = new UsuarioDao();
         Usuario u = new Usuario();
+        u.setUsuario("fer");
         u.setCorreo("fer_f@outlook.com");
         u.setPass("contra");
-        System.out.println("Login: " + dao.login(u));
+        dao.create(u);
     } 
     
 }

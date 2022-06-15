@@ -103,6 +103,25 @@ public class PlatilloDao {
         return resultados;
     }
     
+    public PlatilloView readOnePlatilloView(int idPlatillo){
+        String query = "From PlatilloView p Where p.idPlatillo = :idPlatillo";
+        PlatilloView platilloView = null;
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        Transaction transaction = session.getTransaction();
+        try {
+            transaction.begin();
+            Query q = session.createQuery(query, PlatilloView.class);
+            q.setParameter("idPlatillo", idPlatillo);
+            platilloView = (PlatilloView) q.uniqueResult();
+            transaction.commit();
+        } catch (HibernateException he) {
+            if (transaction != null && transaction.isActive()) {
+                transaction.rollback();
+            }
+        }
+        return platilloView;
+    }
+    
     public static void main(String[] args) { //Este main se puede eliminar, es de prueba
         Platillo p = new Platillo();
         PlatilloDao dao = new PlatilloDao();
@@ -120,10 +139,7 @@ public class PlatilloDao {
         p.setIdCategoria(2);
         
         dao.create(p);*/
-        PlatilloDao platilloDao = new PlatilloDao();
-        List<PlatilloView> platillos = platilloDao.readAllPlatilloView();
-        String encode = Base64.getEncoder().encodeToString(platillos.get(0).getFoto());
-        System.out.println(encode);
+        System.out.println(dao.readOnePlatilloView(2));
         
     }
 }
